@@ -1,65 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <script src="./flv.min.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <video id="test" autoplay controls></video>
-    <video id="test2" autoplay controls></video>
-    <video id="test3" autoplay controls></video>
-    <video id="test4" autoplay controls></video>
-    <script>
-        const video = document.getElementById('test')
-        const video2 = document.getElementById('test2')
-        const video3 = document.getElementById('test3')
-        const video4 = document.getElementById('test4')
-        const flvPlayer = flvjs.createPlayer({
-            type: 'flv',
-            url: 'ws://localhost:8080/ws',
-            isLive: true,
-            enableStashBuffer: false,
-        });
-        const flvPlayer2 = flvjs.createPlayer({
-            type: 'flv',
-            url: 'ws://localhost:8080/ws2',
-            isLive: true,
-            enableStashBuffer: false,
-        });
-        const flvPlayer3 = flvjs.createPlayer({
-            type: 'flv',
-            url: 'ws://localhost:8080/ws3',
-            isLive: true,
-            enableStashBuffer: false,
-        });
-        const flvPlayer4 = flvjs.createPlayer({
-            type: 'flv',
-            url: 'ws://localhost:8080/ws4',
-            isLive: true,
-            enableStashBuffer: false,
-        });
-        // 将 flv.js 实例绑定到 video 元素上
-        flvPlayer.attachMediaElement(video);
-        // 启动 flv.js 实例
-        flvPlayer.load();
-        flvPlayer.play();
-        flvPlayer2.attachMediaElement(video2);
-        // 启动 flv.js 实例
-        flvPlayer2.load();
-        flvPlayer2.play();
-        flvPlayer3.attachMediaElement(video3);
-        // 启动 flv.js 实例
-        flvPlayer3.load();
-        flvPlayer3.play();
-        flvPlayer4.attachMediaElement(video4);
-        // 启动 flv.js 实例
-        flvPlayer4.load();
-        flvPlayer4.play();
-    </script>
-</body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/icon.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>飞创工坊</title>
+    <script type="module" crossorigin src="/assets/index-bf16038a.js"></script>
+    <link rel="stylesheet" href="/assets/index-84e17a30.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    
+  </body>
 </html>

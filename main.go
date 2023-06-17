@@ -12,6 +12,15 @@ import (
 func main() {
 	// 初始化gin框架
 	r := gin.Default()
+	// 设置静态目录
+	r.Static("/web", "./public")
+	r.Static("/web2", "./public2")
+	r.Static("/assets", "./public/assets")
+	r.Static("/assects", "./public/assects")
+	r.GET("/", func(c *gin.Context) {
+		c.Header("Content-Type", "text/html; charset=utf-8")
+		c.String(http.StatusOK, "<html><body><h1>golang服务端启动成功</h1><h2>app站点请访问/web2</h2><h2>pc站点请访问/web</h2></body></html>")
+	})
 	r.GET("/ws", func(c *gin.Context) {
 		// 允许所有请求类型
 		upgrader := &websocket.Upgrader{
