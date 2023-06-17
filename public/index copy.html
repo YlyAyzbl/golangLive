@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <video id="video" controls src="http://127.0.0.1:8080/ws" width="640" height="480" autoplay></video>
+    <script>
+        let video = document.getElementById("video")
+        // 设置WebSocket服务器的地址
+        const serverUrl = 'ws://localhost:8080/ws';
+
+        // 建立WebSocket连接
+        const socket = new WebSocket(serverUrl);
+
+        // 当WebSocket连接打开时
+        socket.addEventListener('open', (event) => {
+            console.log('WebSocket连接已打开');
+
+            // 发送消息到WebSocket服务器
+            const message = 'Hello, WebSocket!';
+            socket.send(message);
+        });
+
+        // 当接收到WebSocket服务器发送的消息时
+        socket.addEventListener('message', (event) => {
+            console.log('event.data');
+            let data = atob(event.data)  // 解base64
+            let blob = new Blob([data], { type: 'video/mp4' })
+            let url = URL.createObjectURL(blob)
+            video.src = url
+        });
+
+        // 当WebSocket连接关闭时
+        socket.addEventListener('close', (event) => {
+            console.log('WebSocket连接已关闭');
+        });
+
+        // 当WebSocket连接发生错误时
+        socket.addEventListener('error', (event) => {
+            console.log(`WebSocket连接发生错误: ${event}`);
+        });
+
+    </script>
+</body>
+
+</html>
